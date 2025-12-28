@@ -1,0 +1,36 @@
+NEW HEADWAY Intermediate
+Unit 01
+DATE: 2025-12-28
+
+SB:
+  skills: Reading
+  page: 6-7
+  note: deneme
+
+WB:
+  skills: -
+  page: -
+  note: -
+
+OX:
+  skills: -
+  page: -
+  note: -
+
+PODCAST:
+  skills: listening, pronunciation
+  ref: -
+  min: -
+  note: -
+
+FILM_SERIES:
+  skills: listening, pronunciation
+  ref: -
+  min: -
+  note: -
+
+REVIEW:
+  skills: -
+  ref: -
+  note: -
+
