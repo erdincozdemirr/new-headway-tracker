@@ -1,0 +1,36 @@
+NEW HEADWAY Advanced
+Unit 01
+DATE: 2025-12-28
+
+SB:
+  skills: Reading
+  page: p. 6 - 7
+  note: Deneme
+
+WB:
+  skills: Reading
+  page: p. 6 - 7
+  note: Test
+
+OX:
+  skills: -
+  page: -
+  note: Test
+
+PODCAST:
+  skills: listening, pronunciation
+  ref: Harry Potter 1
+  min: 30
+  note: Test
+
+FILM_SERIES:
+  skills: listening, pronunciation
+  ref: The Lord of th rings
+  min: 25
+  note: test
+
+REVIEW:
+  skills: -
+  ref: -
+  note: -
+
