@@ -12,29 +12,41 @@
 
   <!-- GitHub Connection (owner/repo/token) -->
   <div class="card">
-    <h2>GitHub Connection <span class="pill">Token stored in browser</span></h2>
+  <h2>GitHub Connection <span class="pill">Token stored in browser</span></h2>
 
+  <!-- FORM -->
+  <div id="ghForm">
     <div class="grid3">
       <div>
         <div class="small muted">Owner</div>
-        <input id="ghOwner" type="text" placeholder="erdincozdemirr" />
+        <input id="ghOwner" type="text" />
       </div>
       <div>
         <div class="small muted">Repo</div>
-        <input id="ghRepo" type="text" placeholder="new-headway-tracker" />
+        <input id="ghRepo" type="text" />
       </div>
       <div>
         <div class="small muted">Token (Fine-grained PAT)</div>
-        <input id="ghToken" type="password" placeholder="github_pat_..." />
+        <input id="ghToken" type="password" />
       </div>
     </div>
-
-    <div class="row">
-      <button id="saveCfg" class="primary">Save settings</button>
-      <button id="clearCfg">Clear token</button>
-      <span class="muted small">Do NOT commit your token. This is stored only in localStorage.</span>
-    </div>
   </div>
+
+  <!-- SAVED INFO -->
+  <div id="ghSavedInfo" class="muted" style="display:none;">
+    <p class="ok"><strong>✅ GitHub token saved</strong></p>
+    <p>
+      <strong>Owner:</strong> <span id="savedOwner"></span><br/>
+      <strong>Repo:</strong> <span id="savedRepo"></span>
+    </p>
+  </div>
+
+  <div class="row">
+    <button id="saveCfg" class="primary">Save settings</button>
+    <button id="clearCfg">Clear token</button>
+  </div>
+</div>
+
 
   <div class="card">
     <h2>Daily Log</h2>

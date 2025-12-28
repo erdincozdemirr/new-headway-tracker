@@ -304,6 +304,26 @@ function buildPath(book, unit, date) {
   return `NewHeadway/${book}/${unitFolder}/${date}.txt`;
 }
 
+function renderGitHubConnection() {
+  const cfg = getCfg();
+
+  const form = document.getElementById("ghForm");
+  const saved = document.getElementById("ghSavedInfo");
+
+  if (cfg.token) {
+    // token saved
+    form.style.display = "none";
+    saved.style.display = "block";
+
+    document.getElementById("savedOwner").textContent = cfg.owner;
+    document.getElementById("savedRepo").textContent = cfg.repo;
+  } else {
+    // no token
+    form.style.display = "block";
+    saved.style.display = "none";
+  }
+}
+
 // Events
 function bindEvents() {
   document.getElementById("saveCfg").addEventListener("click", () => {
@@ -312,13 +332,15 @@ function bindEvents() {
       repo:  document.getElementById("ghRepo").value.trim(),
       token: document.getElementById("ghToken").value.trim(),
     });
-    setStatus("GitHub settings saved (localStorage).", "ok");
+    setStatus("GitHub settings saved.", "ok");
+    renderGitHubConnection();
   });
 
   document.getElementById("clearCfg").addEventListener("click", () => {
     localStorage.removeItem("ghToken");
     document.getElementById("ghToken").value = "";
-    setStatus("Token cleared. (Owner/Repo kept)", "ok");
+    setStatus("GitHub token cleared.", "ok");
+    renderGitHubConnection();
   });
 
   document.getElementById("downloadTxt").addEventListener("click", () => {
@@ -359,6 +381,7 @@ function init() {
   loadCfgToInputs();
   document.getElementById("date").value = todayISO();
   bindEvents();
+  renderGitHubConnection();
   setStatus("Ready.");
 }
 
