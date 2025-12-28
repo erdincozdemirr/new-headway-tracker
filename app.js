@@ -3,10 +3,19 @@ const SKILLS_BASE = ["Reading","Listening","Speaking","Writing","Grammar","Vocab
 // OX: remove pronunciation, add everyday_eng
 const SKILLS_OX   = ["Reading","Listening","Speaking","Writing","Grammar","Vocabulary","Everyday Eng"];
 
+const OX_URLS = {
+  "Beginner": "https://elt.oup.com/student/headway/beg/?cc=tr&selLanguage=en",
+  "Elementary": "https://elt.oup.com/student/headway/elementary4/?cc=tr&selLanguage=en",
+  "Pre-Intermediate": "https://elt.oup.com/student/headway/preint4/?cc=tr&selLanguage=en",
+  "Intermediate": "https://elt.oup.com/student/headway/int/?cc=tr&selLanguage=en",
+  "Upper-Intermediate": "https://elt.oup.com/student/headway/upperintermediate/?cc=tr&selLanguage=en",
+  "Advanced": "https://elt.oup.com/student/headway/advanceddownload?cc=tr&selLanguage=en",
+};
+
 const SECTIONS = [
-  { key:"SB", label:"SB", type:"book" },
-  { key:"WB", label:"WB", type:"book" },
-  { key:"OX", label:"OX", type:"ox" },
+  { key:"SB", label:"Student's Book", type:"book" },
+  { key:"WB", label:"Workbook", type:"book" },
+  { key:"OX", label:"Oxford Learner's Website", type:"ox" },
   { key:"PODCAST", label:"Podcast", type:"media_audio" },
   { key:"FILM_SERIES", label:"Film / Series", type:"media_video" },
   { key:"REVIEW", label:"Review", type:"review" },
@@ -52,13 +61,42 @@ function sectionSkills(sec) {
   return []; // Podcast + Film/Series => no checkboxes
 }
 
+function updateOxLink() {
+  const book = document.getElementById("book").value;
+  const url = OX_URLS[book] || "https://elt.oup.com/student/headway/?cc=tr&selLanguage=en";
+
+  const a = document.getElementById("oxLink");
+  if (!a) return;
+
+  a.href = url;
+  a.title = `Open Oxford ELT for ${book}`;
+}
+
 function buildSectionsUI() {
   const wrap = document.getElementById("sectionsCard");
   wrap.innerHTML = "";
 
   SECTIONS.forEach(sec => {
     const card = el("div", { class:"card" });
-    card.appendChild(el("h2", { html: sec.label }));
+    if (sec.key === "OX") {
+  const h2 = el("h2");
+
+  const a = el("a", {
+    id: "oxLink",
+    href: "#",
+    target: "_blank",
+    rel: "noopener noreferrer",
+    class: "ox-link",
+  });
+
+  a.appendChild(document.createTextNode("Oxford Learner's Website"));
+  a.appendChild(el("span", { class: "ox-icon", html: "↗" }));
+
+  h2.appendChild(a);
+  card.appendChild(h2);
+} else {
+  card.appendChild(el("h2", { html: sec.label }));
+}
 
     // Skills (only SB/WB/OX/Review)
     const skillsList = sectionSkills(sec);
@@ -378,6 +416,10 @@ function bindEvents() {
 function init() {
   populateUnits();
   buildSectionsUI();
+  updateOxLink();
+  document.getElementById("book").addEventListener("change", () => {
+  updateOxLink();
+});
   loadCfgToInputs();
   document.getElementById("date").value = todayISO();
   bindEvents();

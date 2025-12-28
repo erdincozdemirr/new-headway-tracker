@@ -58,3 +58,27 @@ button.primary { border-color: #111; }
   background: #f3f3f3;
   font-size: 12px;
 }
+
+.ox-link {
+  color: inherit;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ox-link:hover {
+  text-decoration: underline;
+}
+
+.ox-icon {
+  font-size: 14px;
+  opacity: 0.7;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.ox-link:hover .ox-icon {
+  transform: translate(2px, -2px);
+  opacity: 1;
+}
+
