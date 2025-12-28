@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>New Headway Tracker</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <h1>New Headway Tracker</h1>
+  <div class="muted">Log what you did today → save as TXT into your GitHub repo.</div>
+
+  <!-- GitHub Connection (owner/repo/token) -->
+  <div class="card">
+    <h2>GitHub Connection <span class="pill">Token stored in browser</span></h2>
+
+    <div class="grid3">
+      <div>
+        <div class="small muted">Owner</div>
+        <input id="ghOwner" type="text" placeholder="erdincozdemirr" />
+      </div>
+      <div>
+        <div class="small muted">Repo</div>
+        <input id="ghRepo" type="text" placeholder="new-headway-tracker" />
+      </div>
+      <div>
+        <div class="small muted">Token (Fine-grained PAT)</div>
+        <input id="ghToken" type="password" placeholder="github_pat_..." />
+      </div>
+    </div>
+
+    <div class="row">
+      <button id="saveCfg" class="primary">Save settings</button>
+      <button id="clearCfg">Clear token</button>
+      <span class="muted small">Do NOT commit your token. This is stored only in localStorage.</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Daily Log</h2>
+
+    <div class="grid3">
+      <div>
+        <div class="small muted">Book</div>
+        <select id="book">
+          <option>Beginner</option>
+          <option selected>Elementary</option>
+          <option>Pre-Intermediate</option>
+          <option>Intermediate</option>
+          <option>Upper-Intermediate</option>
+          <option>Advanced</option>
+        </select>
+      </div>
+
+      <div>
+        <div class="small muted">Unit</div>
+        <select id="unit"></select>
+      </div>
+
+      <div>
+        <div class="small muted">Date</div>
+        <input id="date" type="date" />
+      </div>
+    </div>
+
+    <div class="card" id="sectionsCard"></div>
+
+    <div class="row">
+      <button id="downloadTxt">Download TXT</button>
+      <button id="saveToGitHub" class="primary">Save to GitHub (TXT)</button>
+    </div>
+
+    <div id="status" class="status muted"></div>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
